@@ -23,15 +23,11 @@ namespace Queue_System {
             this.Hide();
         }
 
-        private void btnMonitor_Click(object sender, EventArgs e)
-        {
-            myMonitorForm = new frmMonitor(this);
-            myMonitorForm.Show();   
-            // this.Hide();
+        private void btnExit_Click(object sender, EventArgs e) {
+            Application.Exit();
         }
 
         private frmLogin myLoginForm;
         private frmRegistration myRegistrationForm;
-        private frmMonitor myMonitorForm;
     }
 }

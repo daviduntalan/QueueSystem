@@ -13,15 +13,16 @@ namespace Queue_System {
         }
 
         // Method to handle the event
-        public static void OnLabelUpdated(string newText) 
+        public void OnNextQueueNumberUpdated(string servingQueueNumber) 
         {
-            try
+            string whichWindow = servingQueueNumber.Substring(0, 4);
+            string queueNumber = servingQueueNumber.Substring(5);
+
+            switch (whichWindow)
             {
-                lblCurrentlyServing.Text = newText;
-            }
-            catch (NullReferenceException nre)
-            {
-                MessageBox.Show("You probably didn't open, Monitor window: " + nre.Message);
+                case "Win1": lblCurrentlyServing1.Text = queueNumber; break;
+                case "Win2": lblCurrentlyServing2.Text = queueNumber; break;
+                case "Win3": lblCurrentlyServing3.Text = queueNumber; break;
             }
         }
 

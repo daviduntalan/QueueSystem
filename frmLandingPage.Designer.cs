@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLandingPage));
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnRegistration = new System.Windows.Forms.Button();
-            this.btnMonitor = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.picBoxPSA = new System.Windows.Forms.PictureBox();
             this.lblPhilippine = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -65,18 +65,18 @@
             this.btnRegistration.UseVisualStyleBackColor = false;
             this.btnRegistration.Click += new System.EventHandler(this.btnRegistration_Click);
             // 
-            // btnMonitor
+            // btnExit
             // 
-            this.btnMonitor.BackColor = System.Drawing.Color.Red;
-            this.btnMonitor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMonitor.Location = new System.Drawing.Point(11, 293);
-            this.btnMonitor.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMonitor.Name = "btnMonitor";
-            this.btnMonitor.Size = new System.Drawing.Size(355, 52);
-            this.btnMonitor.TabIndex = 5;
-            this.btnMonitor.Text = "Monitor";
-            this.btnMonitor.UseVisualStyleBackColor = false;
-            this.btnMonitor.Click += new System.EventHandler(this.btnMonitor_Click);
+            this.btnExit.BackColor = System.Drawing.Color.Red;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(11, 293);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(355, 52);
+            this.btnExit.TabIndex = 5;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // picBoxPSA
             // 
@@ -127,14 +127,16 @@
             // 
             // frmLandingPage
             // 
+            this.AcceptButton = this.btnRegistration;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(380, 358);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPhilippine);
             this.Controls.Add(this.picBoxPSA);
-            this.Controls.Add(this.btnMonitor);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnRegistration);
             this.Controls.Add(this.btnLogin);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -152,7 +154,7 @@
 
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnRegistration;
-        private System.Windows.Forms.Button btnMonitor;
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.PictureBox picBoxPSA;
         private System.Windows.Forms.Label lblPhilippine;
         private System.Windows.Forms.Label label1;

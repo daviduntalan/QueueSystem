@@ -7,58 +7,63 @@ namespace Queue_System {
 
         private frmLandingPage myLandingPage;
         private frmLogin loginPage;
+        private frmMonitor myMonitor;
 
         // Define a delegate for the event
-        public delegate void LabelUpdateHandler(string newText);
+        public delegate void MonitorQueueUpdateHandler(string servingQueueNumber);
 
         // Define the event using the delegate
-        public event LabelUpdateHandler LabelUpdated;
+        public event MonitorQueueUpdateHandler NextQueueNumberUpdate;
 
 
-        public frmWindow(frmLogin loginPage) 
+        public frmWindow(frmLogin loginPage, frmMonitor myMonitor) 
         {
-            this.loginPage = loginPage;
+            this.myMonitor = myMonitor;
+            this.loginPage = loginPage;            
             InitializeComponent();
         }        
 
         private void btnNextWin1_Click(object sender, EventArgs e) {
             if (MyQueue.myQueue.Count < 1) { lblStatus.Text = "Queue is empty."; return; }
-            var person1 = MyQueue.myQueue.Dequeue();
-            lblQueueNumWin1.Text = person1.QueueNumber;
-            w1firstName.Text = person1.FirstName;
-            w1middleName.Text = person1.MiddleName;
-            w1lastName.Text = person1.LastName;
+            var person = MyQueue.myQueue.Dequeue();
+            lblQueueNumWin1.Text = person.QueueNumber;
+            w1firstName.Text = person.FirstName;
+            w1middleName.Text = person.MiddleName;
+            w1lastName.Text = person.LastName;
 
             // Raise the event
-            LabelUpdated?.Invoke("Serving: " + person1.QueueNumber + " at Window 1");
+            NextQueueNumberUpdate?.Invoke("Win1 " + person.QueueNumber);
         }
 
         private void btnNextWin2_Click(object sender, EventArgs e) {
             if (MyQueue.myQueue.Count < 1) { lblStatus.Text = "Queue is empty."; return; }
-            var person2 = MyQueue.myQueue.Dequeue();
-            lblQueueNumWin2.Text = person2.QueueNumber;
-            w2firstName.Text = person2.FirstName;
-            w2middleName.Text = person2.MiddleName;
-            w2lastName.Text = person2.LastName;
+            var person = MyQueue.myQueue.Dequeue();
+            lblQueueNumWin2.Text = person.QueueNumber;
+            w2firstName.Text = person.FirstName;
+            w2middleName.Text = person.MiddleName;
+            w2lastName.Text = person.LastName;
 
             // Raise the event
-            LabelUpdated?.Invoke("Serving: " + person2.QueueNumber + " at Window 2");
+            NextQueueNumberUpdate?.Invoke("Win2 " + person.QueueNumber);
         }
 
         private void btnNextWin3_Click(object sender, EventArgs e) {
             if (MyQueue.myQueue.Count < 1) { lblStatus.Text = "Queue is empty."; return; }
-            var person3 = MyQueue.myQueue.Dequeue();
-            lblQueueNumWin3.Text = person3.QueueNumber;
-            w3firstName.Text = person3.FirstName;
-            w3middleName.Text = person3.MiddleName;
-            w3lastName.Text = person3.LastName;
+            var person = MyQueue.myQueue.Dequeue();
+            lblQueueNumWin3.Text = person.QueueNumber;
+            w3firstName.Text = person.FirstName;
+            w3middleName.Text = person.MiddleName;
+            w3lastName.Text = person.LastName;
 
             // Raise the event
-            LabelUpdated?.Invoke("Serving: " + person3.QueueNumber + " at Window 3");
+            NextQueueNumberUpdate?.Invoke("Win3 " + person.QueueNumber);
         }
 
         private void backToLoginPage() 
-        {
+        {   
+            this.myMonitor.Dispose();
+            this.myMonitor.Close();
+
             this.loginPage.Show();
             this.Dispose();
             this.Close();

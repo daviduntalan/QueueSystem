@@ -6,6 +6,7 @@ namespace Queue_System
     public partial class frmLogin : Form 
     {
         private frmLandingPage myLandingPage;
+        private frmMonitor myMonitor;
         private frmWindow myWindow;
 
         public frmLogin(frmLandingPage landingPage) 
@@ -21,12 +22,14 @@ namespace Queue_System
             string password = txtPassword.Text;
             if (username.Equals("user") && password.Equals("pass"))
             {
-                myWindow = new frmWindow(this);
+                myMonitor = new frmMonitor(myLandingPage);
+                myMonitor.Show();
 
-                // Subscribe frmMonitor to frmWindow's event
-                myWindow.LabelUpdated += frmMonitor.OnLabelUpdated;
-
+                myWindow = new frmWindow(this, myMonitor);
+                /* Subscribe frmMonitor's OnNextQueueNumberUpdated to frmWindow's event */
+                myWindow.NextQueueNumberUpdate += myMonitor.OnNextQueueNumberUpdated; 
                 myWindow.Show();
+
                 this.Hide();
             }
             else
