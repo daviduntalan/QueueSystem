@@ -39,6 +39,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.picBoxPSA = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblWaitingInQueue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxPSA)).BeginInit();
             this.SuspendLayout();
             // 
@@ -169,12 +171,40 @@
             this.label1.Text = "Window";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Roboto Bk", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(223, 440);
+            this.label2.Margin = new System.Windows.Forms.Padding(10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(226, 80);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Waiting:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblWaitingInQueue
+            // 
+            this.lblWaitingInQueue.BackColor = System.Drawing.Color.Transparent;
+            this.lblWaitingInQueue.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWaitingInQueue.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lblWaitingInQueue.Location = new System.Drawing.Point(466, 437);
+            this.lblWaitingInQueue.Margin = new System.Windows.Forms.Padding(10);
+            this.lblWaitingInQueue.Name = "lblWaitingInQueue";
+            this.lblWaitingInQueue.Size = new System.Drawing.Size(300, 80);
+            this.lblWaitingInQueue.TabIndex = 14;
+            this.lblWaitingInQueue.Text = "###";
+            this.lblWaitingInQueue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(924, 521);
+            this.Controls.Add(this.lblWaitingInQueue);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.picBoxPSA);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -209,5 +239,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox picBoxPSA;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblWaitingInQueue;
     }
 }

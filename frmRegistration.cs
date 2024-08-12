@@ -16,6 +16,11 @@ namespace Queue_System {
             InitializeComponent();
         }
 
+        private string getNextQueueNumAndFormat() 
+        { 
+            return string.Format("{0:000}", ++MyQueue.STARTING_NUMBER); 
+        }
+
         private void frmRegistration_Load(object sender, EventArgs e) {
 
             if (dataGridView1.Rows.Count < 1)
@@ -24,14 +29,21 @@ namespace Queue_System {
                 {
                     DialogResult result = MessageBox.Show("Queue is empty, would you like to load sample data?",
                         "Empty Queue", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        string[] sampleData1 = { (++MyQueue.STARTING_NUMBER).ToString(), "David, Jr.", "Caabay", "Untalan" };
-                        string[] sampleData2 = { (++MyQueue.STARTING_NUMBER).ToString(), "Salamona", "Timan", "Utara" };
-                        string[] sampleData3 = { (++MyQueue.STARTING_NUMBER).ToString(), "John David", "Caleb", "Pangan" };
+                    if (result == DialogResult.Yes) {
+                        /* 
+                        string[] sampleData1 = { getNextQueueNumAndFormat(), "David, Jr.", "Caabay", "Untalan" };
+                        string[] sampleData2 = { getNextQueueNumAndFormat(), "Salamona", "Timan", "Utara" };
+                        string[] sampleData3 = { getNextQueueNumAndFormat(), "John David", "Caleb", "Pangan" };
                         dataGridView1.Rows.Add(sampleData1);
                         dataGridView1.Rows.Add(sampleData2);
-                        dataGridView1.Rows.Add(sampleData3);
+                        dataGridView1.Rows.Add(sampleData3); 
+                        */
+                        for (int i = 0; i < 2; ++i) {
+                            string[] sampleData = { 
+                                getNextQueueNumAndFormat(), "Firstname"+i, "Middlename"+i, "Lastname"+i
+                            };
+                            dataGridView1.Rows.Add(sampleData);
+                        }
                     }
                 }
                 else
@@ -72,7 +84,10 @@ namespace Queue_System {
                 return;
             }
 
-            string qNumber = (++MyQueue.STARTING_NUMBER).ToString();
+            string zeroPrefixesQueueNumber = string.Format("{0:000}", 
+                int.Parse((++MyQueue.STARTING_NUMBER).ToString())
+            );
+            string qNumber = zeroPrefixesQueueNumber;
             string[] newEntry = { qNumber, fName, mName, lName };
             dataGridView1.Rows.Add(newEntry);
         }
@@ -95,8 +110,8 @@ namespace Queue_System {
                 txtFirstName.Text = currentSelectedRow.Cells[1].Value.ToString();
                 txtMiddleName.Text = currentSelectedRow.Cells[2].Value.ToString();
                 txtLastName.Text = currentSelectedRow.Cells[3].Value.ToString();
-                lblStatusQueueIndex.Text = "index: " + currentSelectedIndex.ToString() +
-                    " queue: " + currentSelectedRow.Cells[0].Value.ToString();
+                lblStatusQueueIndex.Text = // "index: " + currentSelectedIndex.ToString() +
+                    " ticket: " + currentSelectedRow.Cells[0].Value.ToString();
             }
             else
             {
@@ -134,7 +149,7 @@ namespace Queue_System {
                 if (row.Cells["colQueueNumber"].Value != null) 
                 {
                     Person person = new Person(
-                        row.Cells["colQueueNumber"].Value.ToString(),
+                        string.Format("{0:000}", int.Parse( row.Cells["colQueueNumber"].Value.ToString() )),
                         row.Cells["colFirstName"].Value.ToString(),
                         row.Cells["colMiddleName"].Value.ToString(),
                         row.Cells["colLastName"].Value.ToString()                     

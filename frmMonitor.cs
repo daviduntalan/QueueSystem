@@ -13,7 +13,7 @@ namespace Queue_System {
         }
 
         // Method to handle the event
-        public void OnNextQueueNumberUpdated(string servingQueueNumber) 
+        public void OnNextQueueNumberUpdated(string servingQueueNumber, string waitingQueueNumber) 
         {
             string whichWindow = servingQueueNumber.Substring(0, 4);
             string queueNumber = servingQueueNumber.Substring(5);
@@ -24,6 +24,8 @@ namespace Queue_System {
                 case "Win2": lblCurrentlyServing2.Text = queueNumber; break;
                 case "Win3": lblCurrentlyServing3.Text = queueNumber; break;
             }
+
+            lblWaitingInQueue.Text = waitingQueueNumber;
         }
 
         private void backToLandingPage() 
